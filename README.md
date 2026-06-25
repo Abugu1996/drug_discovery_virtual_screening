@@ -30,7 +30,7 @@ The first dashboard puts seven numbers up front so anyone opening the file gets 
 1. Read the raw CSV and checked every column for type, range, missing values, and duplicates. Zero duplicate compounds, zero duplicate rows.
 2. Cleaned the data per the audit: median fill on the three gappy columns, sign fix on the one bad surface area value.
 3. Computed the KPIs above.
-4. Cut the work into five separate dashboards so each fits a laptop screen, rather than packing forty charts onto one canvas.
+4. Cut the work into five separate dashboards, .
 5. Drew every chart in matplotlib using one fixed brown and gray palette for a consistent look.
 Stack: Python, pandas, NumPy, scikit-learn, matplotlib.
 
