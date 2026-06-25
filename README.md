@@ -45,11 +45,15 @@ Stack: Python, pandas, NumPy, scikit-learn, matplotlib.
 ## Project Insights
 
 One finding reshapes how the whole dataset should be read, so it goes first.
--The `active` label is a cutoff on binding affinity. Every active compound scores 7.0 or higher. Every inactive one scores below 7.0. There's no overlap at all. The label holds no information beyond the affinity column it was cut from. Drop affinity into a classifier and you score a fake 1.000 on every metric, which tells you nothing. That's why affinity stays out of the model.
--LogP does most of the work. Active compounds run greasier. Their median LogP is 4.81 against 2.96 for the inactive group. LogP correlates 0.55 with the activity flag and 0.60 with binding affinity. In the model, the LogP-by-pI interaction term and LogP itself ranked as the two strongest predictors by a clear margin.
--Size and polarity barely register. Molecular weight, polar surface area, and hydrophobicity show almost no relationship with activity. Their correlations with the label sit at -0.03, 0.04, and 0.04. Active and inactive box plots for these three nearly sit on top of each other.
--The model holds up on chemistry alone. With affinity removed, the random forest still reaches an AUC of 0.952 and an F1 of 0.808 (precision 0.859, recall 0.763). A compound's measured properties carry enough signal to flag likely binders before any docking score exists.
--The hit rate looks generous. A 30.4% pass rate runs far above what a real screen returns, where strong hits are scarce. The clean 7.0 threshold and the near-balanced classes point to a generated or teaching dataset rather than raw lab output.
+The `active` label is a cutoff on binding affinity. Every active compound scores 7.0 or higher. Every inactive one scores below 7.0. There's no overlap at all. The label holds no information beyond the affinity column it was cut from. Drop affinity into a classifier and you score a fake 1.000 on every metric, which tells you nothing. That's why affinity stays out of the model.
+
+LogP does most of the work. Active compounds run greasier. Their median LogP is 4.81 against 2.96 for the inactive group. LogP correlates 0.55 with the activity flag and 0.60 with binding affinity. In the model, the LogP-by-pI interaction term and LogP itself ranked as the two strongest predictors by a clear margin.
+
+Size and polarity barely register. Molecular weight, polar surface area, and hydrophobicity show almost no relationship with activity. Their correlations with the label sit at -0.03, 0.04, and 0.04. Active and inactive box plots for these three nearly sit on top of each other.
+
+The model holds up on chemistry alone. With affinity removed, the random forest still reaches an AUC of 0.952 and an F1 of 0.808 (precision 0.859, recall 0.763). A compound's measured properties carry enough signal to flag likely binders before any docking score exists.
+
+The hit rate looks generous. A 30.4% pass rate runs far above what a real screen returns, where strong hits are scarce. The clean 7.0 threshold and the near-balanced classes point to a generated or teaching dataset rather than raw lab output.
 
 
 ## Conclusion
